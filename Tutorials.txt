@@ -1,0 +1,6 @@
+Bai 1: Read, Show and Save Image
+Bai 2: Read, Show and Save Video
+1. Read video: 
+- Mở file video: đường dẫn video
+- Mở các ảnh liên tiếp nhau: tập ảnh liên tiếp
+- Từ camera: 
