@@ -6,5 +6,12 @@ Bai 2: Read, Show and Save Video
 - Mở các ảnh liên tiếp nhau: tập ảnh liên tiếp
 - Từ camera: 
 
+<<<<<<< HEAD
 Bai 3: Image Resizing
 
+=======
+Bai 3: Resizing Image
+- Cv2.Resize(): 
++ width, height
++ Scaling: fx, fy
+>>>>>>> 53ea4190e58e6f7b5a4471d213d21d739c6570d5

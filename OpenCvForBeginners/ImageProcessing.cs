@@ -46,7 +46,6 @@ namespace OpenCvForBeginners
             Cv2.Resize(imageIn, imageOut, new Size(), 8, 8, InterpolationFlags.Cubic);
 
             Cv2.ImShow("Cubic 3", imageOut);
-
         }
     }
 }
