@@ -1,5 +1,7 @@
 ﻿using OpenCvSharp;
 using OpenCvSharp.Extensions;
+using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace OpenCvForBeginners
@@ -36,6 +38,14 @@ namespace OpenCvForBeginners
                 return openFileDialog1.FileName;
             }
             else return null;
+        }
+
+        internal void AddProccesingImageTye(ComboBox comboBox1, List<string> pROCESSING_IMAGE)
+        {
+            foreach (var item in pROCESSING_IMAGE)
+            {
+                comboBox1.Items.Add(item);
+            }
         }
 
         internal void ShowImage(PictureBox pictureBox1, Mat image)

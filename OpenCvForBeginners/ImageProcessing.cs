@@ -14,7 +14,7 @@ namespace OpenCvForBeginners
         /// </summary>
         /// <param name="pathImg">Đường dẫn ảnh</param>
         /// <returns></returns>
-        public Mat ReadImage(string pathImg, ImreadModes mode)
+        public Mat ReadImage(string pathImg, ImreadModes mode = ImreadModes.Color)
         {
             return Cv2.ImRead(pathImg, mode);
         }
@@ -27,6 +27,26 @@ namespace OpenCvForBeginners
         internal void SaveImage(string path, Mat image)
         {
             Cv2.ImWrite(path, image);
+        }
+
+        internal void Resize(string pathImg)
+        {
+            var imageIn = ReadImage(pathImg);
+            Console.WriteLine(imageIn.Width + "-" + imageIn.Height);
+            Mat imageOut = new Mat();
+            int newWidth = 1000, newHeight = (int)((float)newWidth / (float) imageIn.Width * imageIn.Height);
+            Cv2.Resize(imageIn, imageOut, new Size(), 8, 8, InterpolationFlags.Nearest);
+
+            Cv2.ImShow("Nearest 1 ", imageOut);
+
+            Cv2.Resize(imageIn, imageOut, new Size(), 8, 8, InterpolationFlags.Linear);
+
+            Cv2.ImShow("Linear 2", imageOut);
+
+            Cv2.Resize(imageIn, imageOut, new Size(), 8, 8, InterpolationFlags.Cubic);
+
+            Cv2.ImShow("Cubic 3", imageOut);
+
         }
     }
 }

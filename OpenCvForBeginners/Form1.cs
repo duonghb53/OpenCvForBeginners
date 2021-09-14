@@ -10,11 +10,14 @@ namespace OpenCvForBeginners
         private Commons commons;
         private bool isVideoRunning = false;
         private VideoCapture videoCapture;
+        private string _pathImg;
         public Form1()
         {
             InitializeComponent();
             imageProcessing = new ImageProcessing();
             commons = new Commons();
+
+            commons.AddProccesingImageTye(comboBox1, Constants.PROCESSING_IMAGE);
         }
 
         /// <summary>
@@ -25,13 +28,13 @@ namespace OpenCvForBeginners
         private void button1_Click(object sender, EventArgs e)
         {
             // Lấy đường dẫn ảnh
-            string pathImg = commons.OpenFile(false);
+            _pathImg = commons.OpenFile(false);
 
             // Kiểm tra xem có chọn file không
-            if (pathImg != null)
+            if (_pathImg != null)
             {
                 // Đọc ảnh
-                Mat image = imageProcessing.ReadImage(pathImg, ImreadModes.Color);
+                Mat image = imageProcessing.ReadImage(_pathImg, ImreadModes.Color);
 
                 // Hiển thị ảnh lên PictureBox
                 commons.ShowImage(pictureBox1, image);
@@ -125,5 +128,25 @@ namespace OpenCvForBeginners
             if (videoCapture != null) videoCapture.Dispose();
         }
 
+        private void button4_Click(object sender, EventArgs e)
+        {
+            string type = comboBox1.Text;
+            if (string.IsNullOrEmpty(type)) MessageBox.Show("Vui lòng chọn kiểu xử lý", "Warning!");
+            switch (type)
+            {
+                case "Resize":
+                    imageProcessing.Resize(_pathImg);
+                    break;
+
+                case "Crop":
+                    break;
+
+                case "Rotation":
+                    break;
+
+                default:
+                    break;
+            }
+        }
     }
 }
