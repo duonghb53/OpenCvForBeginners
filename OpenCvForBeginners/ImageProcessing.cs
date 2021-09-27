@@ -9,6 +9,12 @@ namespace OpenCvForBeginners
 {
     class ImageProcessing
     {
+        private Commons commons;
+        public ImageProcessing()
+        {
+            commons = new Commons();
+        }
+
         /// <summary>
         /// Đọc ảnh từ máy tính theo đường dẫn
         /// </summary>
@@ -46,6 +52,15 @@ namespace OpenCvForBeginners
             Cv2.Resize(imageIn, imageOut, new Size(), 8, 8, InterpolationFlags.Cubic);
 
             Cv2.ImShow("Cubic 3", imageOut);
+        }
+
+        internal void CropImage(string pathImg)
+        {
+            var imageIn = ReadImage(pathImg);
+            Console.WriteLine(imageIn.Width + "-" + imageIn.Height);
+            Rect rect = new Rect(200, 200, 600, 200);
+            Mat crop = new Mat(imageIn, rect);
+            Cv2.ImShow("Crop", crop);
         }
     }
 }

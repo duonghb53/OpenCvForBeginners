@@ -139,6 +139,7 @@ namespace OpenCvForBeginners
                     break;
 
                 case "Crop":
+                    imageProcessing.CropImage(_pathImg);
                     break;
 
                 case "Rotation":
